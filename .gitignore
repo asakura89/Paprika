@@ -308,3 +308,4 @@ build-log.txt
 *-log.txt
 *log.txt
 !build.cmd
+!publish.cmd
