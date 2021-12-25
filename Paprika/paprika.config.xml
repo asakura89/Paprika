@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <pipelines name="paprika:runtask" contextType="PaprikaTaskExample.TaskExampleContext, PaprikaTaskExample">
+    <action type="PaprikaTaskExample.Task1, PaprikaTaskExample" method="Process" />
+    <action type="PaprikaTaskExample.Task2, PaprikaTaskExample" method="Process" />
+  </pipelines>
+  <events>
+    <event name="task2:started" type="PaprikaTaskExample.Task2, PaprikaTaskExample" method="OnTask2ProcessStarted" />
+    <event name="task2:finished" type="PaprikaTaskExample.Task2, PaprikaTaskExample" method="OnTask2ProcessFinished" />
+
+    <event name="Paprika:ResultContainsInfo" type="Paprika.DefaultEventHandler, Paprika" method="OnResultContainsInfo" />
+    <event name="Paprika:ResultContainsInfo" type="PaprikaTaskExample.ExampleEventHandler, PaprikaTaskExample" method="OnResultContainsInfo" />
+
+    <event name="Paprika:ResultContainsWarn" type="Paprika.DefaultEventHandler, Paprika" method="OnResultContainsWarn" />
+    <event name="Paprika:ResultContainsWarn" type="PaprikaTaskExample.ExampleEventHandler, PaprikaTaskExample" method="OnResultContainsWarn" />
+
+    <event name="Paprika:ResultContainsError" type="Paprika.DefaultEventHandler, Paprika" method="OnResultContainsError" />
+    <event name="Paprika:ResultContainsError" type="PaprikaTaskExample.ExampleEventHandler, PaprikaTaskExample" method="OnResultContainsError" />
+
+    <event name="Paprika:PipelineExecutionFailed" type="Paprika.DefaultEventHandler, Paprika" method="OnPipelineExecutionFailed" />
+    <event name="Paprika:PipelineExecutionFailed" type="PaprikaTaskExample.ExampleEventHandler, PaprikaTaskExample" method="OnPipelineExecutionFailed" />
+
+    <event name="Paprika:PipelineExecutionSuccess" type="Paprika.DefaultEventHandler, Paprika" method="OnPipelineExecutionSuccess" />
+    <event name="Paprika:PipelineExecutionSuccess" type="PaprikaTaskExample.ExampleEventHandler, PaprikaTaskExample" method="OnPipelineExecutionSuccess" />
+
+    <event name="Paprika:ExceptionThrown" type="Paprika.DefaultEventHandler, Paprika" method="OnExceptionThrown" />
+    <event name="Paprika:ExceptionThrown" type="PaprikaTaskExample.ExampleEventHandler, PaprikaTaskExample" method="OnExceptionThrown" />
+  </events>
+</configuration>
