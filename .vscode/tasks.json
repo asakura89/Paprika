@@ -1,0 +1,67 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Rebuild PaprikaTaskExample",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "${workspaceFolder}\\PaprikaTaskExample\\PaprikaTaskExample.csproj",
+                "--nologo",
+                "--verbosity",
+                "minimal",
+                "--output",
+                "${workspaceFolder}\\Paprika\\bin\\Debug\\net6.0\\PaprikaTaskExample",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Rebuild Paprika",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "${workspaceFolder}\\Paprika\\Paprika.csproj",
+                "--nologo",
+                "--verbosity",
+                "minimal",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Rebuild Examples",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Rebuild PaprikaTaskExample"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        },
+        {
+            "label": "Rebuild All",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Rebuild Examples",
+                "Rebuild Paprika"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": "build"
+        }
+    ]
+}
