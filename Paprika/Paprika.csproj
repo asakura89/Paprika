@@ -2,7 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ayumi\Ayumi.csproj" />
-    <None Include="paprika.config.xml" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="paprika.config.xml" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 
   <PropertyGroup>

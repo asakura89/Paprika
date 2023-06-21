@@ -24,5 +24,6 @@ public static class GlobalContext {
 
         IAssemblyLoader asmLoader = new AssemblyLoader();
         asmLoader.LoadFromPath(AppDomain.CurrentDomain.BaseDirectory);
+        asmLoader.LoadFromPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PaprikaTaskExample"));
     }
 }
