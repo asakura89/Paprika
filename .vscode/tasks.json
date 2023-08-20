@@ -12,7 +12,7 @@
                 "--verbosity",
                 "minimal",
                 "--output",
-                "${workspaceFolder}\\Paprika\\bin\\Debug\\net6.0\\PaprikaTaskExample",
+                "${workspaceFolder}\\Paprika\\bin\\Debug\\net7.0\\PaprikaTaskExample",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
+  <locations>
+    <location path="${var:BaseDir}\\PaprikaTaskExample\\" />
+  </locatons>
   <pipelines name="paprika:runtask" contextType="PaprikaTaskExample.TaskExampleContext, PaprikaTaskExample">
     <action type="PaprikaTaskExample.Task1, PaprikaTaskExample" method="Process" />
     <action type="PaprikaTaskExample.Task2, PaprikaTaskExample" method="Process" />
