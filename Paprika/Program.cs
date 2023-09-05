@@ -55,15 +55,15 @@ public class Program {
             GlobalContext.Initialize();
 
             if (args == null || !args.Any())
-                throw new InvalidOperationException("Please input pipeline name as parameter.");
+                throw new UnintendedBehaviorException("Please input pipeline name as parameter.");
 
             PipelineContext result = GlobalContext.PipelineExecutor.Execute(args[0]);
             HandlePipelineResult(result);
         }
-        catch (InvalidOperationException iex) {
+        catch (UnintendedBehaviorException ubex) {
             String eventName = "Paprika:ExceptionThrown";
             var eargs = new EmitterEventArgs(eventName);
-            eargs.Data.Add("ExceptionMessage", iex.Message);
+            eargs.Data.Add("ExceptionMessage", ubex.Message);
             GlobalContext.Emitter.Emit(eventName, eargs);
         }
         catch (Exception ex) {

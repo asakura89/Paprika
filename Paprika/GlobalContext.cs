@@ -45,7 +45,7 @@ public static class GlobalContext {
                 .Select(config => {
                     String pathValue = config.GetAttributeValue("path");
                     if (String.IsNullOrEmpty(pathValue))
-                        throw new BadConfigurationException("Wrong Path configuration. '{pathValue}'.");
+                        throw new BadConfigurationException("'{pathValue}'");
 
                     return pathValue.Resolve();
                 })
