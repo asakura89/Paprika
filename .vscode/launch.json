@@ -5,9 +5,10 @@
             "name": "Run App",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "Rebuild All",
-            "program": "${workspaceFolder}\\Paprika\\bin\\Debug\\net6.0\\Paprika.exe",
-            "args": ["paprika:runtask"],
+            // "preLaunchTask": "Rebuild All",
+            "program": "${workspaceFolder}\\Paprika\\bin\\Debug\\net7.0\\Paprika.exe",
+            // "args": ["paprika:runtask"],
+            "args": ["paprika:validatortask"],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "console": "internalConsole"

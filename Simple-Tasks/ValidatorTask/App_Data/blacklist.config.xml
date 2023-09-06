@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <blacklists>
+    <contains value="test" message="Possible test file" />
+    <contains value="login" message="Possible Login page, make sure this is not our legendary Login.aspx page!" />
+    <contains value="fix" message="Possible patch code" />
+    <contains value="demo" message="Possible test file" />
+    <contains value="smtp" message="Make sure this is not our SMTP custom test code" />
+    <contains value="sms" message="Make sure this is not our SMS custom test code" />
+    <contains value="key" message="possible secret key" />
+    <contains value="FixLastUpdated" message="Possible patch" />
+    <contains value=".svn-base" message="SVN BASE" />
+    <contains value="license" message="Possible license" />
+    <contains value="password" message="Please check" />
+    <contains value="username" message="Please check" />
+    <contains value="passwd" message="Please check" />
+    <contains value="super" message="Please check" />
+
+    <fileExt value=".zip" message="Possible junk package" />
+    <fileExt value=".rar" message="Possible junk package" />
+    <fileExt value=".7z" message="Possible junk package" />
+    <fileExt value=".exe" message="Possible .EXE file" />
+    <fileExt value=".txt" message="Text file, Make sure this is not junk file" />
+    <fileExt value=".csr" message="Possible Certificate Signing Request" />
+    <fileExt value=".old" message="Possible junk file" />
+    <fileExt value=".bak" message="Possible Database backup file" />
+    <fileExt value=".key" message="Possible secret key" />
+    <fileExt value=".map" message="Map file should not deployed." />
+    <fileExt value=".lic" message="Possible license" />
+  </blacklists>
+</configuration>

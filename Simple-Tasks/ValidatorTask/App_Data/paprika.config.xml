@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <!-- paprika config: begin -->
+  <locations>
+    <location path="${var:BaseDir}\\Simple-Tasks\\" />
+  </locations>
+  <pipelines name="paprika:validatortask" contextType="Ria.PipelineContext, Ayumi">
+    <action type="ValidatorTask.ZipReader, ValidatorTask" method="ListOutZipContents" />
+    <action type="ValidatorTask.BlacklistVerifier, ValidatorTask" method="RejectBlacklistedFiles" />
+    <action type="ValidatorTask.FilenameVerifier, ValidatorTask" method="VerifyMinifiedFiles" />
+    <action type="ValidatorTask.FilenameVerifier, ValidatorTask" method="VerifyVersionInFilename" />
+  </pipelines>
+  <events>
+    <!-- Note: Handlers from different pipelines needs to be commented/uncommented to make sure they are not executed mistakenly -->
+
+    <!-- Default Handler as examples -->
+    <event name="Paprika:ResultContainsInfo" type="Paprika.DefaultEventHandler, Paprika" method="OnResultContainsInfo" />
+    <event name="Paprika:ResultContainsWarn" type="Paprika.DefaultEventHandler, Paprika" method="OnResultContainsWarn" />
+    <event name="Paprika:ResultContainsError" type="Paprika.DefaultEventHandler, Paprika" method="OnResultContainsError" />
+    <event name="Paprika:PipelineExecutionFailed" type="Paprika.DefaultEventHandler, Paprika" method="OnPipelineExecutionFailed" />
+    <event name="Paprika:PipelineExecutionSuccess" type="Paprika.DefaultEventHandler, Paprika" method="OnPipelineExecutionSuccess" />
+    <event name="Paprika:ExceptionThrown" type="Paprika.DefaultEventHandler, Paprika" method="OnExceptionThrown" />
+  </events>
+  <!-- paprika config: end -->
+
+  <!-- ZipReader config: begin -->
+  <zippackages>
+    <item path="D:\Temp\MainArtifact.zip" />
+    <item path="D:\Temp\AdditionArtifact.zip" />
+    <item path="D:\Temp\UpgradeScripts.zip" />
+    <item path="D:\Temp\DataPatchCollection.zip" />
+  </zippackages>
+  <!-- ZipReader config: end -->
+
+  <!-- BlacklistVerifier config: begin -->
+  <blacklists>
+    <contains value="test" message="Possible test file" />
+    <contains value="login" message="Possible Login testing page" />
+    <contains value="fix" message="Possible patch code" />
+    <contains value="demo" message="Possible test file" />
+    <contains value="smtp" message="Possible SMTP custom test code" />
+    <contains value="sms" message="Possible SMS custom test code" />
+    <contains value="key" message="Possible secret key" />
+    <contains value="FixLastUpdated" message="Possible patch" />
+    <contains value=".svn-base" message="SVN BASE" />
+    <contains value="license" message="Possible license" />
+    <contains value="password" message="Possible credential" />
+    <contains value="username" message="Possible credential" />
+    <contains value="passwd" message="Possible credential" />
+    <contains value="admin" message="Possible credential" />
+
+    <fileExt value=".zip" message="Possible junk package" />
+    <fileExt value=".rar" message="Possible junk package" />
+    <fileExt value=".7z" message="Possible junk package" />
+    <fileExt value=".txt" message="Possible junk file" />
+    <fileExt value=".csr" message="Possible Certificate Signing Request" />
+    <fileExt value=".old" message="Possible junk file" />
+    <fileExt value=".bak" message="Possible Database backup or general backup file" />
+    <fileExt value=".key" message="Possible secret key" />
+    <fileExt value=".map" message="Map file should not be deployed" />
+    <fileExt value=".lic" message="Possible license" />
+  </blacklists>
+  <!-- BlacklistVerifier config: end -->
+</configuration>

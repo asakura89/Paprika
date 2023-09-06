@@ -23,6 +23,48 @@
             "problemMatcher": "$msCompile"
         },
         {
+            "label": "Rebuild FileProcessing",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "${workspaceFolder}\\Simple-Tasks\\FileProcessingTasks\\FileProcessingTasks.csproj",
+                "--nologo",
+                "--verbosity",
+                "minimal",
+                "--output",
+                "${workspaceFolder}\\Paprika\\bin\\Debug\\net7.0\\Simple-Tasks",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Rebuild Validator",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "${workspaceFolder}\\Simple-Tasks\\ValidatorTask\\ValidatorTask.csproj",
+                "--nologo",
+                "--verbosity",
+                "minimal",
+                "--output",
+                "${workspaceFolder}\\Paprika\\bin\\Debug\\net7.0\\Simple-Tasks",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
             "label": "Rebuild Paprika",
             "command": "dotnet",
             "type": "shell",
@@ -42,20 +84,12 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "Rebuild Examples",
-            "dependsOrder": "sequence",
-            "dependsOn": [
-                "Rebuild PaprikaTaskExample"
-            ],
-            "problemMatcher": [
-                "$msCompile"
-            ]
-        },
-        {
             "label": "Rebuild All",
             "dependsOrder": "sequence",
             "dependsOn": [
-                "Rebuild Examples",
+                // "Rebuild PaprikaTaskExample",
+                // "Rebuild FileProcessing",
+                "Rebuild Validator",
                 "Rebuild Paprika"
             ],
             "problemMatcher": [

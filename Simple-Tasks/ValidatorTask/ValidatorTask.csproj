@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>net7.0</TargetFramework>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
   </PropertyGroup>
@@ -10,5 +11,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Ayumi\Ayumi.csproj" />
+    <!-- <Content Include="App_Data\\blacklist.config.xml" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /> -->
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="DotNetZip" Version="1.16.0" />
   </ItemGroup>
 </Project>
