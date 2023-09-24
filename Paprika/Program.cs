@@ -2,6 +2,7 @@ using Arvy;
 using Exy;
 using Ria;
 using Emi;
+using System.Text;
 
 namespace Paprika;
 
@@ -50,14 +51,33 @@ public class Program {
         GlobalContext.Emitter.Emit(eventName, new EmitterEventArgs(eventName));
     }
 
+    static String GetHelpText() =>
+        new StringBuilder()
+            .Append("Usage: Paprika [pipeline name] [config path]")
+            .AppendLine()
+            .AppendLine("pipeline name:")
+            .AppendLine("  choose one pipeline to be ran.")
+            .AppendLine()
+            .AppendLine("config paths:")
+            .AppendLine("  normally is `.\\paprika.config.xml`.")
+            .ToString();
+
     public static void Main(String[] args) {
         try {
-            GlobalContext.Initialize();
+            Boolean noArgs = args == null || !args.Any();
+            Boolean firstArgsIsHelp = args[0] == "--help";
+            if (noArgs || firstArgsIsHelp) {
+                Console.WriteLine(GetHelpText());
+                return;
+            }
 
-            if (args == null || !args.Any())
-                throw new UnintendedBehaviorException("Please input pipeline name as parameter.");
+            String pipeline = args[0];
+            if (args.Length > 1)
+                GlobalContext.Initialize(args[1]);
+            else
+                GlobalContext.Initialize();
 
-            PipelineContext result = GlobalContext.PipelineExecutor.Execute(args[0]);
+            PipelineContext result = GlobalContext.PipelineExecutor.Execute(pipeline);
             HandlePipelineResult(result);
         }
         catch (UnintendedBehaviorException ubex) {

@@ -13,14 +13,16 @@ public static class GlobalContext {
 
     public static IPipelineExecutor PipelineExecutor { get; set; }
 
-    public static void Initialize() {
-        String paprikaConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "paprika.config.xml");
-        IList<String> locations = GetAssemblyLocations(paprikaConfigPath);
+    public static void Initialize(String configPath = "") {
+        if (String.IsNullOrEmpty(configPath))
+            configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "paprika.config.xml");
+
+        IList<String> locations = GetAssemblyLocations(configPath);
         DynamicLoadAssemblies(locations);
 
         ITypeAndAssemblyParser typeNAsmParser = TypeAndAssemblyParser.Instance;
-        Emitter = new XmlConfigEmitterLoader(typeNAsmParser, paprikaConfigPath).Load();
-        PipelineExecutor = new XmlConfigPipelineLoader(paprikaConfigPath).Load();
+        Emitter = new XmlConfigEmitterLoader(typeNAsmParser, configPath).Load();
+        PipelineExecutor = new XmlConfigPipelineLoader(configPath).Load();
     }
 
     static void DynamicLoadAssemblies(IList<String> locations) {

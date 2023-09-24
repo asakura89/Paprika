@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Ayumi\Ayumi.csproj" />
+    <ProjectReference Include="..\Ayumi\Ayumi\Ayumi.csproj" />
     <Content Include="paprika.config.xml" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 
